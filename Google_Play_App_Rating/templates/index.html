@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Play Rating</title>
+
+    <style>
+
+      body{
+        text-align: center;
+      }
+
+      div.DIVISION {
+        width: 100%;
+        font-size: x-large;
+        height: 40px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        }
+
+      input.INPUT {
+        width: 60%;
+        border: 3px solid #00B4CC;
+        padding: 5px;
+        height: 25px;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+        color: #043735;
+        font-size: 20px;
+        align-items: center;
+        }
+
+      select.SELECT {
+        width: 61%;
+        border: 3px solid #00B4CC;
+        padding: 5px;
+        height: 40px;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+        color: #000000;
+        font-size: 20px;
+        }
+
+      button.Button {
+          width: 80px;
+          height: 36px;
+          border: 1px solid #00B4CC;
+          background: #00B4CC;
+          text-align: center;
+          color: #fff;
+          border-radius: 0 5px 5px 0;
+          cursor: pointer;
+          font-size: 20px;
+        }
+    </style>
+
+</head>
+
+
+<body style="background-color: #00536f;">
+<div>
+  <form method="POST" action="" class="Input-data">
+    {% csrf_token %}
+    <h1>Google Play Rating</h1>
+
+    <div class="DIVISION">
+      <select name="category" id="Category" class="SELECT">
+        <option selected>Select the category of the app</option>
+        <option value="0">FAMILY</option>
+        <option value="1">GAME</option>
+        <option value="2">TOOLS</option>
+        <option value="3">MEDICAL</option>
+        <option value="4">LIFESTYLE </option>
+        <option value="5">PERSONALIZATION </option>
+        <option value="6">FINANCE</option>
+        <option value="7">SPORTS</option>
+        <option value="8">BUSINESS</option>
+        <option value="9">SPORTS</option>
+        <option value="10">PHOTOGRAPHY </option>
+        <option value="11">PRODUCTIVITY </option>
+        <option value="12">HEALTH AND FITNESS</option>
+        <option value="13">COMMUNICATION</option>
+      </select>
+    </div><br>
+
+    <div class="DIVISION">
+      <input type="text" id="Reviews" name="reviews" class="INPUT" placeholder="Review of the app">
+    </div><br>
+
+    <div class="DIVISION">
+      <input type="text" id="Size" name="size" class="INPUT" placeholder="Size of the app in mb"> 
+    </div><br>
+
+    <div class="DIVISION">
+      <input type="text" name="installs" id="Installs" class="INPUT" placeholder="Number of Installation from playstore">
+    </div><br>
+
+    <div class="DIVISION">
+      <select name="type" id="Type" class="SELECT">
+        <option selected>Is the app paid or not</option>
+        <option value="0">FREE</option>
+        <option value="1">PAID</option>
+      </select>
+    </div><br>
+
+    <div class="DIVISION">
+      <input type="text" id="Price" name="price" class="INPUT" placeholder="Price of the app (if free type 0.0)">
+    </div><br>
+
+    <div class="DIVISION">
+      <select name="content" id="Content" class="SELECT">
+        <option selected>PG rating for the app</option>
+        <option value="0">Adults only 18+</option>
+        <option value="1">Everyone</option>
+        <option value="2">Everyone 10+</option>
+        <option value="3">Mature 17+</option>
+        <option value="4">Teen</option>
+        <option value="5">Unrated</option>
+      </select>
+    </div><br>
+
+    <div class="DIVISION">
+      <input type="text" name="version" id="Version" class="INPUT" placeholder="Current version of the app">
+    </div><br>
+
+    <div class="DIVISION">
+      <input type="text" name="year" id="Year" class="INPUT" placeholder="Year it was released">
+    </div><br>
+
+    <div class="DIVISION">
+      <input type="text" id="Month" name="month" class="INPUT" placeholder="Month it was released (for January type 1 and so on)">
+    </div><br>
+
+    <div class="DIVISION">
+      <input type="text" name="day" id="Day" class="INPUT" placeholder="Date of the month it was released">
+    </div><br>
+
+    <div>
+      <button type="submit" name="pred_button" class="Button" value="submit">Submit</button>
+    </div>
+
+  </form>
+  {% if response %}
+    <h2>The rating is: {{ response }}</h2>
+  {% endif %}
+
+  {% if error %}
+    <h2>Error occured: {{ error }}</h2>
+  {% endif %}
+</div>
+</body>
+</html>
