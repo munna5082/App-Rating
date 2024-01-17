@@ -12,6 +12,7 @@ def home(request):
     res = 0
     try:
         if request.method == "POST":
+            name = request.POST["name"]
             category = request.POST["category"]
             reviews = request.POST["reviews"]
             size = request.POST["size"]
